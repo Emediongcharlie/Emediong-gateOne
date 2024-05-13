@@ -25,21 +25,25 @@ public static void main(String[] args){
 	
 
 	LocalDate today = LocalDate.now();
-	System.out.println("Todays's date " + today);
+	System.out.println("Todays's date is " + today);
 	
 	LocalDate oneMonth = today.plusMonths(1);
 	System.out.println("One Month from now is: " + oneMonth);
-
-	//LocalDate ovulationPeriod = secondDate.minusDays(14);
-	//System.out.println("Ovulation date is :" + ovulationPeriod);
 
 	
 	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 	LocalDate localLastTwoMonthDate = LocalDate.parse(lastMonthDate, formatter);
 	LocalDate localLastMonthDate = LocalDate.parse(lastMonthDate, formatter);
 
+	LocalDate ovulationPeriod = localLastMonthDate.minusDays(14);
+	System.out.println("Ovulation date is :" + ovulationPeriod);
+
 	Period monthsPeriod = Period.between(localLastTwoMonthDate, localLastMonthDate);
-	System.out.println("Difference beween two previous period  " + monthsPeriod.getDays());
+	System.out.println(monthsPeriod.getYears());
+	
+	LocalDate fertilePeriod = ovulationPeriod.minusDays(5);
+	LocalDate fertilePeriodEnd = ovulationPeriod.plusDays(1);
+	System.out.print("Fertile period is between " + fertilePeriod + " and " + fertilePeriodEnd);
 	
 	
 }
