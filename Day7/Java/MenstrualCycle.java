@@ -54,6 +54,9 @@ public static void main(String[] args){
 	LocalDate safePeriodEnd = ovulationPeriod.plusDays(2);
 	//System.out.println("Safe period is between " + today + " and " + safePeriod + " and between " + fertilePeriodEnd);
 	System.out.println("Every other day outside the fertile period is safe");
+
+	LocalDate nextCycleBegins = localLastMonthDate.plusDays(result);
+	System.out.println("Date of next cycle is " + nextCycleBegins); 
 	
 }
 }
