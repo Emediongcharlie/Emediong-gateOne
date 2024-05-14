@@ -56,19 +56,19 @@ case 1: do{
 	System.out.println(emails.get(count) + " "); 
 	}
 
-	System.out.print(firstNames
+	System.out.print(firstNames);
 	break;
 
 case 2: System.out.print("Enter the name to be removed:");
 	String removeName = input.next();
 
 	for(int count = 0; count < firstNames.size(); count++){
-	if(removeName.equals(firstNames)){
+	if(removeName.equals(firstNames.get(count))){
 	firstNames.remove(count);
 	}
-	System.out.print(firstNames + " ");
 
 	}
+	System.out.print(firstNames + " ");
 
 	break;
 case 3: System.out.print("Enter phone number:");
@@ -81,6 +81,25 @@ case 3: System.out.print("Enter phone number:");
 	}
 	System.out.print(phoneNumbers);
 	
+case 4: System.out.print("Enter first name:");
+	String findfirstName = input.next();
+	
+	for(int count = 0; count < firstNames.size(); count++){
+	if(findfirstName.equals(firstNames.get(count))){
+	System.out.print(findfirstName);
+	}
+	}
+
+case 5: System.out.print("Enter last name:");
+	String findLastName = input.next();
+	
+	for(int count = 0; count < firstNames.size(); count++){
+	if(findLastName.equals(firstNames.get(count))){
+	System.out.print(findLastName);
+	}
+	}
+
+
 	
 
 
