@@ -36,28 +36,25 @@ public static void main(String[] args){
 	LocalDate localLastTwoMonthDate = LocalDate.parse(lastTwoMonthDate, formatter);
 	LocalDate localLastMonthDate = LocalDate.parse(lastMonthDate, formatter);
 
-	LocalDate ovulationPeriod = localLastMonthDate.minusDays(14);
-	System.out.println("Ovulation date is :" + ovulationPeriod);
-
 	Period monthsPeriod = Period.between(localLastTwoMonthDate, localLastMonthDate);
 	long result = ChronoUnit.DAYS.between(localLastTwoMonthDate, localLastMonthDate);
 	//System.out.println(monthsPeriod.getDays());
 	System.out.println("Your length of Menstrual Cycle is " + result + "days");
-	
-	
+
+	LocalDate nextCycleBegins = localLastMonthDate.plusDays(result);
+	System.out.println("Date of next cycle is " + nextCycleBegins); 
+
+	LocalDate ovulationPeriod = nextCycleBegins.minusDays(14);
+	System.out.println("Ovulation date is :" + ovulationPeriod);
+
 	LocalDate fertilePeriod = ovulationPeriod.minusDays(5);
 	LocalDate fertilePeriodEnd = ovulationPeriod.plusDays(1);
 	System.out.println("Fertile period is between " + fertilePeriod + " and " + fertilePeriodEnd);
-	
 	
 	LocalDate safePeriod = ovulationPeriod.minusDays(6);
 	LocalDate safePeriodEnd = ovulationPeriod.plusDays(2);
 	//System.out.println("Safe period is between " + today + " and " + safePeriod + " and between " + fertilePeriodEnd);
 	System.out.println("Every other day outside the fertile period is safe");
-
-	LocalDate nextCycleBegins = localLastMonthDate.plusDays(result);
-	System.out.println("Date of next cycle is " + nextCycleBegins); 
-	
 }
 }
 	
