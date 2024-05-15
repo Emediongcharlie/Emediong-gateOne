@@ -1,16 +1,19 @@
 import java.util.*;
 import java.util.Scanner;
 public class PhoneBookApp{
+
+	static ArrayList<String>firstNames = new ArrayList<String>();
+	static ArrayList<String>lastNames = new ArrayList<String>();
+	static ArrayList<String>phoneNumbers = new ArrayList<String>();
+	static ArrayList<String>emails = new ArrayList<String>();
+	static Scanner input = new Scanner(System.in);
+
 public static void main(String[] args){
 
-	Scanner input = new Scanner(System.in);
-	ArrayList<String>firstNames = new ArrayList<String>();
-	ArrayList<String>lastNames = new ArrayList<String>();
-	ArrayList<String>phoneNumbers = new ArrayList<String>();
-	ArrayList<String>emails = new ArrayList<String>();
-	String nextOne = null;
+	storeRecord();
+	}
 	
-	
+public static void storeRecord(){
 	
 System.out.println("""
 
@@ -26,7 +29,24 @@ int user = input.nextInt();
 
 switch(user){
 
-case 1: do{
+case 1: addContact();
+	break;
+case 2: removeContact();
+	break;
+case 3: findContactByPhoneNumber();
+	break;
+case 4: findContactByFirstName();
+	break;
+case 5: findContactByLastName();
+	break;
+}
+}
+
+public static void addContact(){
+
+	String nextOne = null;
+
+	do{
 	System.out.print("Add contact");
 	System.out.print("Enter your first name:");
 	String firstName = input.next();
@@ -54,61 +74,82 @@ case 1: do{
 	System.out.println(phoneNumbers.get(count) + " ");
 
 	System.out.println(emails.get(count) + " "); 
+	
+	}
+	System.out.println("New contact saved successfully>>>>>>");
+	
+	System.out.println("press 1 to go back or 0 to continue");
+	int whatNext = input.nextInt();
+	if(whatNext == 1){
+		storeRecord();
+	}
+	if(whatNext == 0){
+		//break;
+	}
 	}
 
-	System.out.print(firstNames);
-	break;
+public static void removeContact(){
 
-case 2: System.out.print("Enter the name to be removed:");
+	System.out.print("Enter the name to be removed:");
 	String removeName = input.next();
 
 	for(int count = 0; count < firstNames.size(); count++){
 	if(removeName.equals(firstNames.get(count))){
 	firstNames.remove(count);
+	lastNames.remove(count);
+	phoneNumbers.remove(count);
 	}
 
 	}
-	System.out.print(firstNames + " ");
+	System.out.println(firstNames + " ");
+	storeRecord();
+	}
 
-	break;
-case 3: System.out.print("Enter phone number:");
+
+public static void findContactByPhoneNumber(){
+
+ 	System.out.print("Enter phone number:");
 	String findPhoneNumber = input.next();
 
 	for(int count = 0; count < phoneNumbers.size(); count++){
 	if(findPhoneNumber.equals(phoneNumbers.get(count))){
-	System.out.print(findPhoneNumber);
-	}
-	}
-	System.out.print(phoneNumbers);
+	System.out.print(firstNames.get(count) + " ");
+	System.out.println(lastNames.get(count));
+	System.out.print(phoneNumbers.get(count));
 	
-case 4: System.out.print("Enter first name:");
+	}
+	}
+	storeRecord();
+	}
+	
+public static void findContactByFirstName(){
+
+	System.out.print("Enter first name:");
 	String findfirstName = input.next();
 	
 	for(int count = 0; count < firstNames.size(); count++){
 	if(findfirstName.equals(firstNames.get(count))){
-	System.out.print(findfirstName);
+	System.out.print(firstNames.get(count) + " ");
+	System.out.println(lastNames.get(count));
+	System.out.print(phoneNumbers.get(count));
 	}
+	}
+	storeRecord();
 	}
 
-case 5: System.out.print("Enter last name:");
+public static void findContactByLastName(){
+
+	System.out.print("Enter last name:");
 	String findLastName = input.next();
 	
-	for(int count = 0; count < firstNames.size(); count++){
-	if(findLastName.equals(firstNames.get(count))){
-	System.out.print(findLastName);
+	for(int count = 0; count < lastNames.size(); count++){
+	if(findLastName.equals(lastNames.get(count))){
+	System.out.print(firstNames.get(count) + " ");
+	System.out.println(lastNames.get(count));
+	System.out.print(phoneNumbers.get(count));
 	}
 	}
-
-
-	
-
-
-
-}
-
-
-
-
-}
+	storeRecord();
+	}
 
 }
