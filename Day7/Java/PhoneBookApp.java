@@ -14,8 +14,12 @@ public static void main(String[] args){
 	}
 	
 public static void storeRecord(){
-	
+
+System.out.println("================================================================");
+System.out.println("Welcome to our Phone Book App");
+
 System.out.println("""
+MENU
 
 1. Add contact
 2. Remove contact
@@ -24,7 +28,7 @@ System.out.println("""
 5. Find contact by last name
 6. Edit contact
 """);
-
+System.out.println("==================================================================");
 int user = input.nextInt();
 
 switch(user){
@@ -49,8 +53,6 @@ public static void addContact(){
 	String nextOne = null;
 
 	do{
-	System.out.print("Add contact");
-	System.out.print("Enter your first name:");
 	String firstName = input.next();
 	firstNames.add(firstName);
 	System.out.println("Enter your last name:");
@@ -80,7 +82,7 @@ public static void addContact(){
 	}
 	System.out.println("New contact saved successfully>>>>>>");
 	
-	System.out.println("press 1 to go back or 0 to continue");
+	System.out.println("press 1 to go back or 0 to end");
 	int whatNext = input.nextInt();
 	if(whatNext == 1){
 		storeRecord();
@@ -104,7 +106,11 @@ public static void removeContact(){
 
 	}
 	System.out.println(firstNames + " ");
-	storeRecord();
+	System.out.println("press 1 to go back or 0 to end");
+	int whatNext = input.nextInt();
+	if(whatNext == 1){
+		storeRecord();
+	}
 	}
 
 
@@ -117,11 +123,17 @@ public static void findContactByPhoneNumber(){
 	if(findPhoneNumber.equals(phoneNumbers.get(count))){
 	System.out.print(firstNames.get(count) + " ");
 	System.out.println(lastNames.get(count));
-	System.out.print(phoneNumbers.get(count));
-	
+	System.out.println(phoneNumbers.get(count));
+	}
+	if(!findPhoneNumber.equals(phoneNumbers.get(count))){
+	System.out.println("Not found");
 	}
 	}
-	storeRecord();
+	System.out.println("press 1 to go back or 0 to end");
+	int whatNext = input.nextInt();
+	if(whatNext == 1){
+		storeRecord();
+	}
 	}
 	
 public static void findContactByFirstName(){
@@ -133,10 +145,14 @@ public static void findContactByFirstName(){
 	if(findfirstName.equals(firstNames.get(count))){
 	System.out.print(firstNames.get(count) + " ");
 	System.out.println(lastNames.get(count));
-	System.out.print(phoneNumbers.get(count));
+	System.out.println(phoneNumbers.get(count));
 	}
 	}
-	storeRecord();
+	System.out.println("press 1 to go back or 0 to end");
+	int whatNext = input.nextInt();
+	if(whatNext == 1){
+		storeRecord();
+	}
 	}
 
 public static void findContactByLastName(){
@@ -148,25 +164,36 @@ public static void findContactByLastName(){
 	if(findLastName.equals(lastNames.get(count))){
 	System.out.print(firstNames.get(count) + " ");
 	System.out.println(lastNames.get(count));
-	System.out.print(phoneNumbers.get(count));
+	System.out.println(phoneNumbers.get(count));
 	}
 	}
-	storeRecord();
+	System.out.println("press 1 to go back or 0 to continue");
+	int whatNext = input.nextInt();
+	if(whatNext == 1){
+		storeRecord();
+	}
 	}
 
 public static void editContact(){
 	
 	System.out.print("Enter the phone number you want to edit");
 	String editNumber = input.next();
+		
+
 
 	for(int count = 0; count < phoneNumbers.size(); count++){
+		System.out.print(firstNames.get(count)  + " ");
+		System.out.println(phoneNumbers.get(count));
 	String editNumbers = phoneNumbers.set(count,editNumber); 
 	if(editNumber.equals(phoneNumbers.set(count,editNumber))){
-	System.out.print(phoneNumbers.set(count,editNumber);
-	System.out.print(firstNames.set(count,editNumber));
+	System.out.println(phoneNumbers.set(count,editNumbers));
 	}
 	}
-	storeRecord();
+	System.out.println("press 1 to go back or 0 to end");
+	int whatNext = input.nextInt();
+	if(whatNext == 1){
+		storeRecord();
+	}
 	}
 
 }
