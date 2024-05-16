@@ -39,6 +39,8 @@ case 4: findContactByFirstName();
 	break;
 case 5: findContactByLastName();
 	break;
+case 6: editContact();
+	break;
 }
 }
 
@@ -147,6 +149,21 @@ public static void findContactByLastName(){
 	System.out.print(firstNames.get(count) + " ");
 	System.out.println(lastNames.get(count));
 	System.out.print(phoneNumbers.get(count));
+	}
+	}
+	storeRecord();
+	}
+
+public static void editContact(){
+	
+	System.out.print("Enter the phone number you want to edit");
+	String editNumber = input.next();
+
+	for(int count = 0; count < phoneNumbers.size(); count++){
+	String editNumbers = phoneNumbers.set(count,editNumber); 
+	if(editNumber.equals(phoneNumbers.set(count,editNumber))){
+	System.out.print(phoneNumbers.set(count,editNumber);
+	System.out.print(firstNames.set(count,editNumber));
 	}
 	}
 	storeRecord();
